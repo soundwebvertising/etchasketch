@@ -1,0 +1,21 @@
+body {
+  background-color: grey;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: gray;
+  padding: 10px;
+}
+.grid-item {
+  background-color: rgb(83, 148, 247);
+  border: 1px solid white;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.grid-item-1:before {
+    content: "Grid 1";
+}
