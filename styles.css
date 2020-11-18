@@ -1,11 +1,27 @@
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(16, 50px);
-  grid-template-rows: repeat(16, 50px);
-  grid-gap: 10px;
-  align-content: center;
+body {
+  background-color: grey;
+  text-align: center;
 }
 
+.grid-container {
+  display: inline-grid;
+  margin-top: 25px;
+  min-block-size: 10px;
+  grid-template-columns: repeat(var(--size), 1fr);
+  grid-template-rows: repeat(var(--size), 1fr);
+  width: 600px;
+  height: 600px;
+}
+
+.wrapper {
+ 
+}
+
+.grid-item {
+  display:flex;
+  background-color: rgb(83, 148, 247);
+  border: 1px solid white;
+}
 
 .img-darken {
   transition: 1s;

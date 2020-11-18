@@ -1,27 +1,47 @@
-let gridNum = 0;
 let theDiv;
-let myNodes;
-let mybkground;
-let gridItems;
+let userInput;
+let size;
 
-function myFunction() {
-  let x = 16;
-  for (var rows = 0; rows < x; rows++) {  
-    for (var columns = 0; columns < x; columns++) {
-      gridNum++;
-      let theDiv = document.getElementById("container");
-      let myDiv = document.createElement("DIV");
-      myDiv.className = "grid-item";
-      theDiv.appendChild(myDiv);
-      gridItems = document.querySelectorAll('.grid-item')
-    }
+
+//create the divs for the grid, then call a mouseover event to darken grid-items
+function createGrid(size) {
+  container.innerHTML = "";
+  if (size == null) {
+    size = 16;
   }
+
+  container.style.setProperty('--size', size); 
+ 
+  for (var columns = 0; columns < size * size; columns++) { 
+    theDiv = document.createElement('div');
+    theDiv.classList.add('grid-item');
+    container.appendChild(theDiv);
+    gridItems = document.querySelectorAll('.grid-item')
+  }
+  mouseOver();
+}   
+
+// Add a button to the top of the screen which will clear the current grid 
+// and send the user a popup asking for how many squares per side to make the new grid. 
+// Once entered the new grid should be generated in the same total space as 
+// before (e.g. 960px wide)
+function userPrompt() {
+  container.innerHTML = "";
+  userInput = prompt("Please enter the grid size");
+  // for the user input to a maximum of 100.
+  if (userInput > 99) {
+    alert("Please enter a number less that 99!!");
+    userInput = "";
+    userFunction();
+  }
+  createGrid(userInput);
+} 
+
+//mouse over function to turn grid items different color
+function mouseOver() {
   gridItems.forEach(gridItem => {
     gridItem.addEventListener('mouseover', () => {
-      console.log(gridItem);
       gridItem.classList.add('img-darken')
     })
   });
-}    
-
-
+}
